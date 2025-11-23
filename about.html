@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Waste — About</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-dot"></div>
+      <div>
+        <h1>SmartWaste</h1>
+        <small>Arduino • IoT • Sustainable Cities</small>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="features.html">Features</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="team.html">Team</a>
+    </nav>
+  </header>
+
+  <main class="page about-page">
+    <section class="full-hero">
+      <h2>How It Works</h2>
+      <p class="lead">Step-by-step overview of sensing, processing and telemetry.</p>
+    </section>
+
+    <section class="content-grid">
+      <div class="card">
+        <h3>Hardware</h3>
+        <ul>
+          <li>Arduino Uno / Nano</li>
+          <li>Ultrasonic sensor (HC-SR04)</li>
+          <li>ESP8266 / ESP32 (Wi‑Fi telemetry)</li>
+          <li>Servo (optional) for automated lid</li>
+          <li>LED indicators / Buzzer</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Software Flow</h3>
+        <ol>
+          <li>Ultrasonic reads distance → Arduino converts to fill %</li>
+          <li>Data packaged and sent via Wi-Fi (MQTT/HTTP) to server or cloud</li>
+          <li>Dashboard receives telemetry and triggers alerts at thresholds</li>
+          <li>Routing engine schedules pickups based on fill-priority</li>
+        </ol>
+      </div>
+
+      <div class="card wide">
+        <h3>Futuristic System Diagram</h3>
+        <p>Below is a modern schematic illustrating the connections (Arduino, sensor, Wi-Fi module, servo, power).</p>
+        <div class="diagram-wrap">
+          <img src="images/arduino_schematic.png" alt="Arduino schematic">
+        </div>
+        <p class="caption">Schematic: Arduino UNO → HC‑SR04 → ESP module → Power supply. (Image for demo.)</p>
+      </div>
+
+      <div class="card">
+        <h3>Calibration Tip</h3>
+        <p>Calibrate distance mapping per-bin since bin heights vary. Use `map(distance, minDist, maxDist, 100, 0)` in Arduino to convert.</p>
+      </div>
+
+      <div class="card">
+        <h3>Arduino Pseudo Sketch</h3>
+        <pre class="code">
+// Read ultrasonic and compute percentage
+long distance = readUltrasonic();
+int percent = map(distance, 2, 50, 100, 0); // adjust per bin
+// Send via ESP (HTTP POST or MQTT)
+        </pre>
+      </div>
+
+      <div class="card">
+        <h3>Future Scope</h3>
+        <ul>
+          <li>Solar-powered sensor nodes</li>
+          <li>Edge-ML for anomaly detection (vandalism, dumped items)</li>
+          <li>Fleet routing optimization using historical patterns</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>SmartWaste — hardware notes & tips</p>
+  </footer>
+</body>
+</html>

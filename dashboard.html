@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Waste — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-dot"></div>
+      <div>
+        <h1>SmartWaste</h1>
+        <small>Live Dashboard</small>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="features.html">Features</a>
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="team.html">Team</a>
+    </nav>
+  </header>
+
+  <main class="page dashboard-page">
+    <section class="controls">
+      <button id="startSim" class="btn primary">Start Simulation</button>
+      <button id="stopSim" class="btn ghost">Stop</button>
+      <label>Interval:
+        <select id="intervalSel">
+          <option value="1000">1s</option>
+          <option value="2000" selected>2s</option>
+          <option value="3000">3s</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="bins-grid" id="binsGrid">
+      <!-- bins inserted by JS -->
+    </section>
+
+    <section class="fleet">
+      <h3>Fleet Overview</h3>
+      <canvas id="fleetChart" height="160"></canvas>
+    </section>
+
+    <!-- modal for bin details -->
+    <div id="binModal" class="modal hidden">
+      <div class="modal-inner">
+        <button id="closeModal" class="close">✕</button>
+        <h3 id="modalTitle">Bin A1</h3>
+        <div class="modal-body">
+          <p><strong>Fill:</strong> <span id="modalFill">0%</span></p>
+          <p><strong>Distance (cm):</strong> <span id="modalDist">--</span></p>
+          <p><strong>Last updated:</strong> <span id="modalTime">--:--:--</span></p>
+          <p><strong>Status:</strong> <span id="modalStatus">OK</span></p>
+        </div>
+        <div class="modal-actions">
+          <button id="emptyBtn" class="btn ghost">Mark Emptied</button>
+          <button id="alertBtn" class="btn primary">Send Alert</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>SmartWaste — Interactive Dashboard (simulated telemetry)</p>
+  </footer>
+</body>
+</html>
